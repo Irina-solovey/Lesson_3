@@ -4,28 +4,28 @@
 # •	Вычислить и вывести на экран итоговую сумму всех покупок в "корзине".
 
 # Создаём пустой хеш корзины.
-korzina = {}
+basket = {}
 # Получаем данные от пользователя про товар, цену и количество.
 # Запускаем цикл while, который будет прерван при введении пользователем 'stop' в качестве названия товара.
-while $tovar != "stop"
+while $product != "stop"
   puts "Введите название товара или 'stop'"
-  $tovar = gets.to_s.chomp
-  break if $tovar == "stop"
+  $product = gets.to_s.chomp
+  break if $product == "stop"
   puts "Введите цену за единицу товара"
-  $zena = gets.to_f
+  cost = gets.to_f
   puts "Введите количество товара"
-  $amount = gets.to_f
-  # Заполняем хеш korzina данными, полученными от пользователя и выводим на экран.
-  korzina[$tovar] = { "цена" => $zena, "количество" => $amount }
-  puts korzina
-  # Создаём переменную $suma_tovara для подсчёта стоимости конкретного товара и выводим на экран итоговую сумму.
-  $suma_tovara = $zena * $amount
-  puts "Итоговая сумма за товар #{$tovar} равна #{$suma_tovara}"
+  quantity = gets.to_f
+  # Заполняем хеш basket данными, полученными от пользователя и выводим на экран.
+  basket[$product] = { "цена" => cost, "количество" => quantity }
+  puts basket
+  # Создаём переменную sum_product для подсчёта стоимости конкретного товара и выводим на экран итоговую сумму.
+  sum_product = cost * quantity
+  puts "Итоговая сумма за товар #{$product} равна #{sum_product}"
 end
-# С помощью метода each_value запускаем перебор хеша korzina и аккумулируем итоговую сумму за все товары в корзие.
-$itog = 0
-korzina.each_value do |value|
-  $itog += value["цена"] * value["количество"]
+# С помощью метода each_value запускаем перебор хеша basket и аккумулируем итоговую сумму за все товары в корзие.
+total_amount = 0
+basket.each_value do |amount|
+  total_amount += amount["цена"] * amount["количество"]
 end
-puts "Итоговая сумма в корзине равна #{$itog}"
+puts "Итоговая сумма в корзине равна #{total_amount}"
 
